@@ -18,8 +18,26 @@ body {
   color: #545149;
   background-color: #f4f1ec;
   font-size: 24px;
+  font-family: 'Bungee', cursive;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+
+ main.container {
+  width: 90%;
+  margin: 0 auto;
+  background-color: #a5c7da60;
+  color: #0085cc;
+ }
+
+ .counter.invalid {
+  color: red;
+}
+
+
+
+
+
