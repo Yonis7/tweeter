@@ -1,10 +1,3 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
-
-
 const createTweetElement = function(tweet) {
   const { user, content, created_at } = tweet;
   const $tweet = $(`
@@ -16,7 +9,7 @@ const createTweetElement = function(tweet) {
       </header>
       <p>${content.text}</p>
       <footer>
-        <p>${new Date(created_at).toLocaleString()}</p>
+        <p class="tweet-created-at" data-time="${created_at}"></p>
       </footer>
     </article>
   `);
@@ -28,6 +21,21 @@ const renderTweets = function(tweets) {
     const $tweet = createTweetElement(tweet);
     $('#tweets-container').append($tweet);
   });
+
+  $('.tweet-created-at').each(function() {
+    var time = $(this).attr('data-time');
+    $(this).timeago(time);
+  });
+}
+
+const loadTweets = function() {
+  $.ajax({
+    type: "GET",
+    url: "/tweets",
+    success: function(data) {
+      renderTweets(data);
+    }
+  });
 }
 
 $(document).ready(function(){
@@ -38,19 +46,13 @@ $(document).ready(function(){
 
     $.ajax({
       type: "POST",
-      url: "/path/to/server",
+      url: "/tweets",
       data: formData,
       success: function(data){
         console.log("Data sent to server: ", formData);
       }
     });
   });
-});
 
-
-$('form').submit(function(event){
-  event.preventDefault();
-  var data = $(this).serialize();
-  console.log(data);
-  // send the ajax request with the serialized data
+  loadTweets();
 });
