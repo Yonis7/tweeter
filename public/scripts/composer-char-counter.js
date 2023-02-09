@@ -12,3 +12,6 @@ $(document).ready(function() {
     }
   });
 });
+
+const $tweet = $(`<article class="tweet">Hello world</article>`);
+
