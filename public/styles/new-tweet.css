@@ -106,10 +106,17 @@ section.new-tweet textarea {
 }
 
 
-.fa-solid.fa-heart {
-  color: #7f7f7f;
+
+i.fa-retweet:hover {
+  color: green;
 }
 
-.fa-solid.fa-heart:hover {
+i.fa-heart:hover {
   color: red;
 }
+
+i.fa-envelope:hover {
+  color: blue;
+}
+
+
